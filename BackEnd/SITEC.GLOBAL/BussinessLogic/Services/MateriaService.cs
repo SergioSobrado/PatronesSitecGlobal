@@ -56,7 +56,7 @@ namespace SITEC.GLOBAL.BussinessLogic.Services
         public ResponseBase<int> NewMateriasToStudent(List<MateriasAlumnoVM> materiasAlumnos)
         {
             ResponseBase<int> response = new();
-            MateriasAlumno materiaModel;
+            MateriasAlumno materiaModel = MateriasAlumno.Instancia;
             foreach (MateriasAlumnoVM materias in materiasAlumnos)
             {
                 materiaModel = new MateriasAlumno

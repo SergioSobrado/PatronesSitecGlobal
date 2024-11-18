@@ -6,7 +6,7 @@
         <img src="@/assets/itt.png" width="80" alt="tec">
       </div>
       <div class="nav-user times" v-if="userId > 0 && !isAdmin">
-        <a @click="goTo('/')">Perfil</a>https://kick.com/latesitoo
+        <a @click="goTo('/')">Perfil</a>
         <a @click="goTo('/materias')">Carga de Materia</a>
         <a @click="goTo('/global')">Carga de Materia Global</a>
       </div>
