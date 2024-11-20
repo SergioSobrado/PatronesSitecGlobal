@@ -1,4 +1,5 @@
-﻿using SITEC.GLOBAL.BussinessLogic.Messages;
+﻿using SITEC.GLOBAL.BussinessLogic.Interfaces;
+using SITEC.GLOBAL.BussinessLogic.Messages;
 using SITEC.GLOBAL.BussinessLogic.ViewModels;
 using SITEC.GLOBAL.Data.Repository;
 using SITEC.GLOBAL.Domain.Models;
@@ -21,7 +22,23 @@ namespace SITEC.GLOBAL.BussinessLogic.Services
         public ResponseBase<List<SemestreMatetrias>> GetMateriasBySemestreId(int semestreId)
         {
             ResponseBase<List<SemestreMatetrias>> response = new();
-            response.Result = _customSemestreRepository.GetMateriasBySemestreId(semestreId);
+            List<SemestreMatetrias> semestres = _customSemestreRepository.GetMateriasBySemestreId(semestreId);
+
+            SemestreMateriaCollection semestreMateriaCollection = new();
+
+            foreach(SemestreMatetrias semestre in semestres)
+            {
+                semestreMateriaCollection.AddSemestreMateria(semestre);
+
+            }
+
+            ISemestreMaterias iterator = semestreMateriaCollection.CreateIterator();
+
+            while (iterator.HasNext()) { 
+                SemestreMatetrias semestre = iterator.Next();
+                Console.WriteLine($"Semestre ID: {semestre.SemestreId}, Nombre: {semestre.Semestre?.Name}");
+            }
+            
             if(response.Result.Count > 0)
             {
                 response.Message = "Materias Encontradas";

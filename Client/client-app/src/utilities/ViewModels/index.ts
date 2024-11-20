@@ -46,6 +46,14 @@ export interface Alumno {
     isAdmin: boolean;
 }
 
+export interface AlumnoVM {
+    numeroControl: number;
+    name: string;
+    semestreId: number;
+    carrera: string;
+    semestre: SemestreVM;
+}
+
 export interface MateriasAlumno {
     materiaAlumnoId: number;
     numeroControl: number;

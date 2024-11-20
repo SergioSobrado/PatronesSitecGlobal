@@ -5,9 +5,9 @@
       <div class="datos">
         <img class="imagen" src="@/assets/avatar.jpg" alt="imgan-placeholder">
         <div class="info-user times">
-          <h3>{{ loggedUser.name }}</h3>
-          <h3>{{ loggedUser.carrera }}</h3>
-          <h3>{{ loggedUser.semestre.name }}</h3>
+          <h3>{{ alumnoVM.name }}</h3>
+          <h3>{{ alumnoVM.carrera }}</h3>
+          <h3>{{ alumnoVM.semestre.name }}</h3>
         </div>
       </div>
       <hr>
@@ -38,13 +38,15 @@
 </template>
 
 <script lang="ts">
+import AlumnoService from "@/services/AlumnoService";
 import MateriasService from "@/services/MateriasService";
-import { Alumno, MateriasAlumno, ResponseType } from "@/utilities/ViewModels"
+import { Alumno, AlumnoVM, MateriasAlumno, ResponseType } from "@/utilities/ViewModels"
 import { defineComponent } from "vue";
 export default defineComponent({
   data() {
     return {
       loggedUser: {} as Alumno,
+      alumnoVM: {} as AlumnoVM,
       materiasSemestre: [] as MateriasAlumno[],
       newMaterias: [] as MateriasAlumno[],
       materiasActuales: [] as MateriasAlumno[],
@@ -55,8 +57,16 @@ export default defineComponent({
   methods: {
     getLoggedUser() {
       this.loggedUser = JSON.parse(localStorage.loggedUser);
+
       this.getMateriasCursando();
 
+      AlumnoService.$GetAlumnoByAlumnoId(this.loggedUser.numeroControl)
+      .then((response) => {
+        this.alumnoVM = response.data.result;
+      })
+      .catch((error) => {
+        console.log(error);
+      })
     },
     getMateriasCursando() {
       MateriasService.$GetMateriasCursandoByAlumnoId(this.loggedUser.numeroControl)

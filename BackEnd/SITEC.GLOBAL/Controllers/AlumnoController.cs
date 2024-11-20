@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SITEC.GLOBAL.BussinessLogic.Messages;
 using SITEC.GLOBAL.BussinessLogic.Services;
+using SITEC.GLOBAL.BussinessLogic.ViewModels;
 using SITEC.GLOBAL.Domain.Models;
 
 namespace SITEC.GLOBAL.Controllers
@@ -17,7 +18,7 @@ namespace SITEC.GLOBAL.Controllers
         }
         [HttpGet]
         [Route("GetAlumnoByNumeroDeControl")]
-        public ResponseBase<Alumno> GetAlumnoByNumeroDeControl(int numeroControl)
+        public ResponseBase<AlumnoVM> GetAlumnoByNumeroDeControl(int numeroControl)
         {
             return _service.GetAlumnoByAlumnoId(numeroControl);
         }
