@@ -31,7 +31,7 @@ namespace SITEC.GLOBAL.Data.Configuration
               .WithMany()
               .IsRequired()
               .HasForeignKey(x => x.MateriaId)
-              .OnDelete(DeleteBehavior.Restrict);
+              .OnDelete(DeleteBehavior.Cascade);
 
 
             builder.HasOne(x => x.Maestro)

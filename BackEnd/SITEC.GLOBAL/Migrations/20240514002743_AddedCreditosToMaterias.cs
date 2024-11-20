@@ -13,23 +13,23 @@ namespace SITEC.GLOBAL.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DeleteData(
-                schema: "dbo",
-                table: "Materia",
-                keyColumn: "MateriaId",
-                keyValue: 1);
+            //migrationBuilder.DeleteData(
+            //    schema: "dbo",
+            //    table: "Materia",
+            //    keyColumn: "MateriaId",
+            //    keyValue: 1);
 
-            migrationBuilder.DeleteData(
-                schema: "dbo",
-                table: "Materia",
-                keyColumn: "MateriaId",
-                keyValue: 2);
+            //migrationBuilder.DeleteData(
+            //    schema: "dbo",
+            //    table: "Materia",
+            //    keyColumn: "MateriaId",
+            //    keyValue: 2);
 
-            migrationBuilder.DeleteData(
-                schema: "dbo",
-                table: "Materia",
-                keyColumn: "MateriaId",
-                keyValue: 3);
+            //migrationBuilder.DeleteData(
+            //    schema: "dbo",
+            //    table: "Materia",
+            //    keyColumn: "MateriaId",
+            //    keyValue: 3);
 
             migrationBuilder.AddColumn<int>(
                 name: "Creditos",
